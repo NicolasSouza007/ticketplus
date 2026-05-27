@@ -5,6 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 export function Header() {
   const { status, data } = useSession();
+  
   async function handleLogin() {
     await signIn("google");
   }
@@ -39,7 +40,7 @@ export function Header() {
             </Link>
 
             <button onClick={handleLogout}>
-              <FiLogOut size={26} color="#4b5563" />
+              <FiLogOut size={26} color="#cf2900" />
             </button>
           </div>
         )}
