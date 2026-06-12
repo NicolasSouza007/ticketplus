@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.2",
+    "@hookform/resolvers": "^5.4.0",
     "@prisma/client": "^5.22.0",
+    "axios": "^1.17.0",
     "dotenv": "^17.3.1",
     "icons": "^1.0.0",
     "next": "^14.2.35",
@@ -17,7 +19,9 @@
     "prisma": "^5.22.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^5.5.0"
+    "react-hook-form": "^7.78.0",
+    "react-icons": "^5.5.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
