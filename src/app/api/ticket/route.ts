@@ -57,3 +57,41 @@ export async function PATCH(request: Request) {
     );
   }
 }
+
+export async function POST(request: Request) {
+  const { customerId, name, description } = await request.json();
+
+  if (!customerId || !name || !description) {
+    return NextResponse.json(
+      { error: "Dados incompletos para criar o ticket" },
+      { status: 400 },
+    );
+  }
+
+  try {
+    await prismaClient.ticket.create({
+      data: {
+        name,
+        title: name,
+        description,
+        status: "Aberto",
+        customer: {
+          connect: {
+            id: customerId,
+            
+          },
+        },
+      },
+    });
+
+    revalidatePath("/dashboard");
+
+    return NextResponse.json({ message: "Ticket cadastrado com sucesso." });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json(
+      { error: "Erro ao criar ticket" },
+      { status: 400 },
+    );
+  }
+}

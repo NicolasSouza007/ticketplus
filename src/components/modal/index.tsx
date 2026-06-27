@@ -3,7 +3,7 @@ import { useContext, useRef, MouseEvent } from "react";
 import { ModalContext } from "@/providers/modal";
 
 export function ModalTicket() {
-  const { handleModalVisible } = useContext(ModalContext);
+  const { handleModalVisible, ticket } = useContext(ModalContext);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
@@ -32,33 +32,35 @@ export function ModalTicket() {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-3">
-          <h2 className="font-bold">Nome:</h2>
-          <p>Problema no pc</p>
+          <h2 className="font-bold">Titulo:</h2>
+          <p>{ticket?.ticket.name}</p>
         </div>
 
         <div className="mb-3">
           <h2 className="font-bold">Descrição:</h2>
-          <p>Teste aqui da descrição</p>
+          <p>{ticket?.ticket.description}</p>
         </div>
         <div className="w-full border-b-[1.5px] my-4">
           <h1 className="font-bold text-lg mb-4">Detalhes do Cliente</h1>
         </div>
         <div className="flex flex-wrap gap-2 mb-3">
           <h2 className="font-bold">Nome:</h2>
-          <p>Mercado</p>
+          <p>{ticket?.customer?.name}</p>
         </div>
         <div className="flex flex-wrap gap-2 mb-3">
           <h2 className="font-bold">telefone:</h2>
-          <p>xxxxxxxx</p>
+          <p>{ticket?.customer?.phone}</p>
         </div>
         <div className="flex flex-wrap gap-2 mb-3">
           <h2 className="font-bold">E-mail:</h2>
-          <p>teste@gmail.com</p>
+          <p>{ticket?.customer?.email}</p>
         </div>
-        <div className="flex flex-wrap gap-2 mb-3">
-          <h2 className="font-bold">Endereço:</h2>
-          <p>Rua zé povinho</p>
-        </div>
+        {ticket?.customer?.address && (
+          <div className="flex flex-wrap gap-2 mb-3">
+            <h2 className="font-bold">Endereço:</h2>
+            <p>{ticket.customer.address}</p>
+          </div>
+        )}
       </div>
     </div>
   );

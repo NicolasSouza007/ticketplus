@@ -8,7 +8,7 @@ export interface TicketProps {
   status: string;
   createdAt: Date | null;
   updatedAt: Date | null;
-  customerId: string;
-  userId: string;
+  customerId: string | null;
+  userId: string | null;
   customer?: CustomerProps | null;
 }
